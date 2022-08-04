@@ -15,12 +15,3 @@ export * from "./getCompletedFixtures"
 export * from "./getPendingFixtures"
 export * from "./getTeams"
 export * from "./editTeam"
-
-// export * from './editTeam';
-
-
-// export * from './editPlayer';
-// export * from './getPlayers';
-// export * from './transferPlayer';
-// export * from './getTransfers';
-// export * from './buyPlayer';

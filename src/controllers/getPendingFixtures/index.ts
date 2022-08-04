@@ -5,7 +5,6 @@ import { redisClient } from '../../app';
 export const getPendingFixtures = async (_req: Request, res: Response) => {
     redisClient.get('pendingFixtures', (_err, data) => {
         if (data) {
-            console.log(data)
             return res
                 .status(200)
                 .send({

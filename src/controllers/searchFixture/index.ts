@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
-// import { parseValidationErrors } from '../../middlewares';
 import { Fixture, } from '../../models';
-// import { bodySchema } from './schemas';
-// import { v4 as uuidv4 } from 'uuid';
+
 
 export const searchFixture = async (req: Request, res: Response) => {
     const { team, status } = req.query;
@@ -43,9 +41,7 @@ export const searchFixture = async (req: Request, res: Response) => {
                 }
             }
         ]
-        // search by name
         if (team) {
-            // search by home
             let match = {
                 $match: {
                     $or: [
@@ -57,7 +53,6 @@ export const searchFixture = async (req: Request, res: Response) => {
             pipeline = [...pipeline, match]
         }
         if (status) {
-            // search by home
             let match = {
                 $match: {
                     'status': status,
@@ -67,7 +62,6 @@ export const searchFixture = async (req: Request, res: Response) => {
 
         }
         let fixtures = await Fixture.aggregate(pipeline);
-        console.log(fixtures)
         return res.status(200).json({
             data: fixtures,
         });
@@ -75,84 +69,4 @@ export const searchFixture = async (req: Request, res: Response) => {
         return res.status(500).json({ error: { message: err.message } });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-     {
-                    $addFields: {
-                        'away_name': '$away_team.name',
-                        'home_name': '$home_team.name'
-                    }
-                }
-    */
-
-    // const { error, value } = bodySchema.validate(body);
-
-    // if (error) {
-    //     return res.status(400).json({
-    //         error: {
-    //             success: false,
-    //             message: parseValidationErrors(error),
-    //         },
-    //     });
-    // }
-    //what does my fixture have: homeTeam, awayTeam, , status , fixturelink
-
-    //     try {
-    //         const isFixtureExists = await Fixture.findOne({ ...value })
-    //         if (isFixtureExists) {
-    //             return res.status(400).json({ message: 'Fixture already Exists' });
-    //         }
-
-    //         if (homeTeamId === awayTeamId) {
-    //             return res.status(400).json({ message: 'You cannot play the same team' });
-    //         }
-
-    //         const homeTeam = await Team.findById({ _id: homeTeamId });
-    //         if (!homeTeam) {
-    //             return res.status(404).json({ message: 'Home Team doesnt exist' });
-    //         }
-
-    //         const awayTeam = await Team.findById({ _id: awayTeamId });
-    //         if (!awayTeam) {
-    //             return res.status(404).json({ message: 'Away Team doesnt exist' });
-    //         }
-
-    //         const newFixture = new Fixture({
-    //             homeTeam: homeTeamId,
-    //             awayTeam: awayTeamId,
-    //             fixtureDate,
-    //             fixtureLink: uuidv4()
-    //         })
-    //         await newFixture.save();
-    //         return res.status(200).json({
-    //             data: newFixture,
-    //         });
-    //     } catch (err: any) {
-    //         return res.status(500).json({ error: { message: err.message } });
-    //     }
 };

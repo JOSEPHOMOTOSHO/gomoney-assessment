@@ -10,7 +10,6 @@ export const signUp = async (req: Request, res: Response) => {
   const { error, value } = bodySchema.validate(body);
 
   if (error) {
-    console.log(res.statusMessage, "beans")
     return res.status(400).json({
       error: {
         success: false,
@@ -41,7 +40,6 @@ export const signUp = async (req: Request, res: Response) => {
       data: user
     });
   } catch (err: any) {
-    console.log("EGG", res.statusMessage)
     return res.status(500).json({ error: { message: err.message } });
   }
 };

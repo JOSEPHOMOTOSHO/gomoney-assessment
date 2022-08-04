@@ -5,7 +5,6 @@ import { redisClient } from '../../app';
 export const getTeams = async (_req: Request, res: Response) => {
     redisClient.get('teams', (_err, data) => {
         if (data) {
-            console.log(data)
             return res
                 .status(200)
                 .json({

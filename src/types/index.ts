@@ -43,11 +43,6 @@ export interface UserInfo {
 
 }
 
-// export interface TransferInfo {
-//   owner: mongoose.Types.ObjectId;
-//   player: mongoose.Types.ObjectId;
-//   amount: number;
-// }
 
 export interface FixtureInfo {
   homeTeam: mongoose.Types.ObjectId,

@@ -102,7 +102,6 @@ describe('E2E Team Update', () => {
 
     it('should throw an error when a token is not present in the request header', async () => {
         team = await Team.findOne();
-        console.log("yam", team)
         const res = await request(app)
             .put(`${teamsUrl}/${team._id}`)
             .send(updatePayload);

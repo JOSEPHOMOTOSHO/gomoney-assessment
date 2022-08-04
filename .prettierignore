@@ -1,0 +1,6 @@
+node_modules
+dist
+bin/www
+.DS_STORE
+yarn.lock
+package.json
